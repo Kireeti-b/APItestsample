@@ -18,6 +18,15 @@ public class apiTest {
 		}
 	
 	@Test
+	public void getIndividualRequest() {
+		String apicall = "http://dummy.restapiexample.com/api/v1/employee/1";
+		Response GETIndividualresponse = RestAssured.get(apicall);
+		System.out.println("GET Individual request response is : " + GETIndividualresponse.getStatusCode());
+		Assert.assertEquals(GETIndividualresponse.getStatusCode(), 200, "Status code mismatch"); //Actual response
+		Assert.assertEquals(GETIndividualresponse.getContentType(), "application/json;charset=utf-8", "Response is not of JSON format");
+		}
+	
+	@Test
 	public void postRequest() {
 		String apicall = "http://dummy.restapiexample.com/api/v1/create";
 		String contentType = "application/json";
